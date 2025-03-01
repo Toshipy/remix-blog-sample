@@ -1,9 +1,11 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
-import { Form, json, redirect } from "@remix-run/react";
+import { Form, json, redirect, useNavigation } from "@remix-run/react";
 
 import { createPost } from "../models/post.server";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const formData = await request.formData();
   const title = formData.get("title") as string;
   const slug = formData.get("slug") as string;
@@ -26,6 +28,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 export default function NewPost() {
+  const navigation = useNavigation();
+  const isCreating = Boolean(navigation.state === "submitting");
   return (
     <div>
       <h1>New Post</h1>
@@ -56,7 +60,7 @@ export default function NewPost() {
           />
         </div>
         <button type="submit" className="rounded bg-blue-500 p-2 text-white">
-          Create Post
+          {isCreating ? "Creating..." : "Create Post"}
         </button>
       </Form>
     </div>
