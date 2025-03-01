@@ -26,7 +26,7 @@ export default function PostsAdmin() {
 						))}
 					</ul>
 				</nav>
-				<main>
+				<main className="col-span-4 md:col-span-3">
 					<Outlet />
 				</main>
 			</div>
