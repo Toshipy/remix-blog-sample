@@ -1,4 +1,29 @@
-import { Form } from "@remix-run/react";
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { Form, json, redirect } from "@remix-run/react";
+
+import { createPost } from "../models/post.server";
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const title = formData.get("title") as string;
+  const slug = formData.get("slug") as string;
+  const markdown = formData.get("markdown") as string;
+
+  const errors = {
+    title: title ? null : "Title is required",
+    slug: slug ? null : "Slug is required",
+    markdown: markdown ? null : "Markdown is required",
+  };
+
+  const hasErrors = Object.values(errors).some((error) => error !== null);
+
+  if (hasErrors) {
+    return json({ errors });
+  }
+
+  await createPost({ title, slug, markdown });
+  return redirect("/posts/admin");
+};
 
 export default function NewPost() {
   return (
