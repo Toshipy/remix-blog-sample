@@ -6,6 +6,7 @@
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { installGlobals } from "@remix-run/node";
 
+// eslint-disable-next-line import/no-unresolved
 import { prisma } from "~/db.server";
 
 installGlobals();

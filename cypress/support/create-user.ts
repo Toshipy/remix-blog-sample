@@ -7,7 +7,9 @@
 import { installGlobals } from "@remix-run/node";
 import { parse } from "cookie";
 
+// eslint-disable-next-line import/no-unresolved
 import { createUser } from "~/models/user.server";
+// eslint-disable-next-line import/no-unresolved
 import { createUserSession } from "~/session.server";
 
 installGlobals();

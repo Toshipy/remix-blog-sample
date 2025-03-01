@@ -65,6 +65,11 @@ export default function Index() {
             </div>
           </div>
         </div>
+        <div className="m-16 text-center">
+          <Link to="/posts" className="text-xl text-blue-500 underline">
+            Blog Posts
+          </Link>
+        </div>
 
         <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
           <div className="mt-6 flex flex-wrap justify-center gap-8">
