@@ -1,6 +1,8 @@
 import { json, Link, useLoaderData } from "@remix-run/react";
 
-import { getPosts } from "../models/post.server";
+// eslint-disable-next-line import/no-unresolved
+import { getPosts } from "~/models/post.server";
+
 
 export const loader = async () => {
 	return json({ posts: await getPosts() });
