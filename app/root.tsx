@@ -23,7 +23,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function App() {
-return (
+  return (
     <html lang="en" className="h-full">
       <head>
         <meta charSet="utf-8" />
